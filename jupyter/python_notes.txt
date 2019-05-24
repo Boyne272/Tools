@@ -1,0 +1,133 @@
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+import numpy as np
+import time as tm
+import copy as cp
+import pandas as pd
+import sympy as sy
+import sys	
+
+GENERAL
+	- linux has / in file names, windows has \
+
+STYLING 
+	- Explicit is better than implicit.
+	- Don't duplicate code, use functions.
+	- Try to keep things compact enough to read in one go.
+	- Make variable names meaningful if used on more than one line.
+	- Simple is often better than clever.
+	- Practise the principle of least astonishment.
+	- Add comments when they add meaning.
+	- PEP8 is the common python linter protocall (a pep8 modual exists that is an automatic checker of python syntax)
+	- spider has an imbuilt pep8 lint accessable in preferences and f8
+	
+VIRTUAL ENVIRONMENTS
+	- there is an inbuilt library called venv for VEs (NOT DEFUALT ON UBUNTU "apt-get install python3-venv"
+	- create ./foo/ folder
+	- run python3 -m venv <name>
+	- to start the environment on linux "source foo/bin/activate"
+	- to turn off use "deactivate"
+
+BASH
+	- #!/usr/bin/env python3 the #! is bash magic that tells it what environment to run code in
+	- # -*- coding: ascii -*- tell python to use ascii 
+	- python default is Unicode encoding (utf-8) which includes international symbols too
+	- sys.arg list of the string arguments given when executing the script, sys.argv[0] being the name of the script 
+	- alternativly argpase modual allows for flags to be passed in too
+	
+IMPORTING
+	- reload command refreshes changes in a single import
+	- python looks in the current directory then sys.path vairable for an import modual
+	- docstring is placed at the top of a script and displayed when help or ? used 
+	- PEP257 gives good	docstring conventions
+	- numpydoc is a better style that can be auto generated with the sphinx package
+	- if __name__ == "__main__" allows you to double up a modual as a script (only activates when executed not imported)
+	
+PACKAGES
+	- multiple moduals in a directory
+	- __init__.py is called from the directory when its imported and often imports all the moduals wanted
+	- one should also include:
+		- requierments.txt for other moduals needed
+	
+	SETUP
+		- from setuptools import setup
+		- setup(
+		name='prime',  # Name of package, required
+		version='1.0.0',  # Version number, required
+		packages=['prime'],  # directories to install, required
+		)
+		- the __init__.py must refer to other modules with a .file-name
+		- version numbers 1.1.1 is version, update, patch
+		(semantic versioning)
+		
+	- the sys.path stores the path python checks for packages, this is inherited from the bash vairable PYTHONPATH that can be edited on startup by the bashrc file
+IPYTHON
+	- ! and % are ipython magic
+	- ! raises to the next level of interpreter, normally linux
+	- %run has a simular affect 
+	- use ?%magic_func inline to find out more about it
+	- %timeit (or timeit modual for normal python) times a program
+	- %reset resets history and all imported moduals
+	
+GENERATORS
+	- use the yield method in a function to make it a generator
+	- has the advantage of not requiering large memory spaces
+	  
+NUMPY TRICKS
+	FUNCTIONS
+		- np.eye - identity matrix
+		- pprint - fancy printing
+		- np.meshgrid takes range lists and returns every cordinate that would exist in that list
+		- np.isclose() checks if a number is withing roundoff error of another number
+	
+	SLICING 
+		- a[first_element, element_not_included, step]
+		- ... is for any number of ":,:,:,:" indexes
+	
+	ARRAYS 	
+		COPIES
+			- either use np.array(x) or x.copy() for DEEP COPIES
+			- a=x[:] is a shallow copy
+			- a=x is a name reference (neither shallow or deep copy)
+			- can shallow copy a slice (A VEIW) of an array and then assign it
+			- can reshape with a.shape=(x,y) or np.reshape(a, (x,y))
+			- mat1.base is mat checks if mat1 is shallow copy
+					
+		FANCY INDEXING
+			- a[ [0,1,2,3], [0,1,2,3] ] gives elements [0,0], [1,1], etc
+			- can also slice with boolian mask a[ a < 0 ]
+			- THESE ARE COPIES not a view
+		
+		MANIPULATIONS
+			- a*b is dot product
+			- a.dot(b) is matrix multiplication
+			- concatenate((a1,a2),axis=0)
+			- split(a, indices_or_sections, axis=0)
+			- flatten
+			- ravel(a)
+			- stack(arrays[, axis])
+			- tile(a, reps)
+			- repeat(a, repeats[, axis])
+			- unique(ar[, return_index, return_inverse, ...])
+			- trim_zeros(filt[, trim])
+			- fill(scalar)
+			- xv, yv = meshgrid(x,y)
+			
+	RANDOM
+		- randf is array of random floats
+		- standard_normal is array of normaly distributed floats
+		
+	SAVING
+		- savetxt and loadtxt 
+		- genfromtext often better
+		
+	LINALG
+		- conpute standard things (matrix norm and determinant etc)
+		- solve linear equations fast
+		- eignen decomposition fast
+	
+SCIPY TRICKS
+		- scipy linalg has better functionality than numpy
+		- integrate, optimise and interpolate useful
+		- specials give a wide range of common functions
+		

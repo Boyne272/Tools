@@ -1,0 +1,17 @@
+MATPLOTLIB.PYPLOT TRICKS
+	GENERAL
+		- Ipython magic functions %matplotlib inline or %matplotlib notebook change output formats (MUST IMPORT PYPLOT AFTER THIS FUNCTION)
+		- can change gerneral settings with plt.rcParams
+	
+	FUNCTIONS
+		- plt.annotate is good for adding details
+		- plt.savefig save from commandline
+		- plt.subplots_adjust edits the current subplots
+		- plt.subplot2grid can make different size subplots on same fig
+		- plt.contourf makes a contor plot
+		- plt.colorbar give a key for heatmaps
+		- ax.fill_between to shade an area
+		- zoomed_inset_axes from inset_locator 
+		
+	WIDGETS
+		- Slider allows for interactive plots (requiers the on_change method to be set)

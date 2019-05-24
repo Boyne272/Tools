@@ -1,0 +1,69 @@
+DOCUMENTATION
+	- three types of reader
+		- users
+		- user-developers
+		- developers
+	
+	- documentation by docstring and comments needs to cover all these
+	- docstring dont write an essay
+	
+SPHINX
+	- is a type of AUTOMATIC DOCUMENTATION
+	- Doxygen is the most popular, will use later for c (not now!)
+	- #################
+	
+MISC
+	- directory seperators are different for mac and win, there is a system function that will generate the appopirate file path for cross platform programs
+
+
+
+	
+	
+TESTING
+	- there are many horry stories of accidents caused by not testing computer code
+	- REMEMBER TO
+		+ do risk assesment
+		+ give human readable error codes
+		+ ROBUST TESTING
+	- assert is an example of a test for python
+	
+TDD
+	- Test Driven Development = build the tests first is best
+	- basic manual TDD:
+		+ pick the basic thing you want the program to make
+		+ write the test function
+		+ make the program pass it
+		+ write another test & repeat
+		+ refactor code (imporve without changing input/output)
+	
+	- ALWAYS CHECK YOUR TEST CAN FAIL BEFORE YOU IMPORVE YOUR CODE!
+	- remember to recheck all previous test
+	- can fix old test syntaxs but don't change what the test is checking
+	- Consider both the usual and the corner cases
+	- good practice is to write tests as assetions in a test function
+	
+	- DOCTEST (default modual)
+		- A better way of writing test is to put them in the docstring as examples
+		- doctest.testmod() in the code will cause these test to be run
+		- test syntax '>>> ' + input
+		- next line is the expected output
+		
+		eg. >>> dodathin(x=1)
+		'this is what you should return'
+		- if a test fails doctest will stop the code and inform the user and stop
+		- doctest is EXTREMELY PICKY on formatting (eg. arrays need to be printed with correct spacing)
+		
+	- UNITTESTs (default modual)
+		- we create a class that inherits unittest.TestCase
+		- in this class are all of our tests and raise errors/assetions for any fails
+		- run unittest.main() to run these test
+		
+		- this is more robust than doctest
+		- use of self.assertEquals or self.assertAlmostEquals are very good here
+		- all test will be run regardless of how many fail
+
+	PYTEST
+		- this is a modual that allows you to run both unittest and doctest
+		- it runs from outside the modules with py.test <file names>
+		- it will also detect any functions named test or test_* and run them too
+		- it collects every test it find and runs them one at a time
