@@ -45,7 +45,7 @@ class ProgressBar():
         # create the time and iteration stores
         self.times = []
         self.iterations = []
-        self.start = tm.clock()
+        self.start = tm.time()
 
 
     def reset(self):
@@ -57,7 +57,7 @@ class ProgressBar():
 
     def add_time(self, iteration):
         "store the current time and iteration"
-        self.times.append(tm.clock()-self.start)
+        self.times.append(tm.time()-self.start)
         self.iterations.append(iteration)
 
 
