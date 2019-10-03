@@ -88,3 +88,33 @@ class ProgressBar():
         axis.set(xlabel="Iteration", ylabel="Time (s)")
 
         return axis
+
+    
+from itertools import cycle
+
+class counter():
+    'Simple counting iterator'
+    def __init__(self, start=0):
+        self.i=start
+    def __call__(self):
+        self.i += 1
+        yield str(self.i) # yeild as string for printing
+
+class Spinner():
+    'Prints a loading spinner that can also tell how long something took'
+    def __init__(self, option='spin'):
+        self.start = time.time()
+        
+        if option=='spin':
+            self.g = cycle(['|', '/', '-', '\\'])
+        elif option=='dots':
+            self.g = cycle(['.', '..', '...', '....'])
+        elif option=='Numers':
+            self.g = counter()
+
+    def __call__(self):
+        sys.stdout.write('\r' + next(self.g))
+        sys.stdout.flush()
+
+    def time(self, prefix='\t'):
+        print(prefix, ' took %.4f'%(time.time()-self.start), 's')
