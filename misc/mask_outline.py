@@ -5,7 +5,8 @@ Last updated on Mon Oct  7 10:32:24 2019
 """
 
 import numpy as np
-from scipy.signal import convolve2d    
+from scipy.signal import convolve2d
+
 
 # laplacian array
 LAP_8 = np.array([[1., 1., 1.],
@@ -21,32 +22,34 @@ LAP_V = np.array([[-1., 0., 1.],
                   [-2., 0., 2.],
                   [-1., 0., 1.]])
 
-LAP_HORIZONTAL  = np.ones((3, 3))
+
+LAP_HORIZONTAL = np.ones((3, 3))
+
 
 def _outline(mask, multi=True, diag=True):
     """
     Take the given integer mask and use a laplacian convolution
-    to find the outlines. 
-    
+    to find the outlines.
+
     Parameters
     ----------
-    
+
     mask : 2D array
         The mask to find edges of
-        
+
     multi : bool (optional)
         If set to true a combination of horizontal and vertical laplacians
-        will be used to reduce the chance of particular mask geometries 
+        will be used to reduce the chance of particular mask geometries
         tircking the convolution algorithm.
-        
+
     diag : bool (optional)
         decides if diagonals are to be included in the laplacian
-    
+
     """
-    
+
     # create the laplacian
     lap = LAP_8 if diag else LAP_4
-    
+
     # do the convolution to find the edges
     conv = convolve2d(mask, lap, mode='valid').astype(bool)
 
