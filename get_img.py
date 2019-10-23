@@ -1,6 +1,5 @@
-
+import requests
 import numpy as np
-from IPython.display import display
 from PIL import Image
 from io import BytesIO
 
