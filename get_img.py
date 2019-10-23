@@ -1,3 +1,4 @@
+import sys
 import requests
 import numpy as np
 from PIL import Image
@@ -17,3 +18,17 @@ def get_img(url, crop_dims=None, return_arr=False):
     if return_arr:
         return np.array(img)
     return img
+
+def get_imgs(urls, return_arr=False):
+
+    imgs = []
+    for i, url in enumerate(urls):
+        try:
+            sys.stdout.write(f'\r {100*i/len(urls):.2}%  Loading {url}')
+            imgs.append(get_img(url, return_arr=True))
+        except BaseException:
+            sys.stdout.write(f'\r Error on {i}th url: {url}')
+            print(' ') # forces new line
+            imgs.append(None)
+    
+    return imgs
