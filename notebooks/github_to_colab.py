@@ -12,7 +12,7 @@ from getpass import getpass
 
 # inputs
 username = "Boyne272"
-clone_url = "https://github.com/Boyne272/Tools.git"
+clone_url = "https://github.com/Boyne272/Richs_Cycle_GAN.git"
 name = "Richard Boyne"
 email = "rmb115@ic.ac.uk"
 
@@ -30,12 +30,11 @@ if not os.path.isdir(".git"):
     os.environ['GITHUB_AUTH'] = clone_url[:8] + username + ':' + password + '@' + clone_url[8:]
     del password
     
-    # clone the repo and move into it
-    !cp -r .config ..
-    !rm -r .config
-    !git clone $GITHUB_AUTH . #--quiet # reduce the output of clone
-    !cp -r ../.config .
-    !rm -r ../.config
+    # clone the repo here
+    !git clone $GITHUB_AUTH repo --quiet # reduce the output of clone
+    !cp -r repo/.git .
+    !cp repo/.gitignore .
+    !rm -r repo
     
     
 # set name and email for commits
