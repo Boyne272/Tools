@@ -267,43 +267,6 @@ class multi_animate():
         f.close()
 
 
-def percent_print(i, i_max, interval=1):
-    """
-    Print a progress bar or percentage value
-
-    Parameters
-    ----------
-    i : int
-        The current iteration number
-    i_max : int
-        The total number of iterations to complete
-    interval : int, optional
-        The frequency of updating the progress bar (set high for long
-        simulations)
-
-    Returns
-    -------
-    updated : bool
-        Whether the update bar was updated
-    """
-
-    if i % interval == 0:
-
-        # print percent
-        # sys.stdout.write("\r %.1f %% Done" % (100*i/i_max))
-
-        # print progress bar
-        m = int(50 * i/i_max) + 1
-        n = 50 - m
-        sys.stdout.write("\rProgress |" + "#"*m + " "*n + "|")
-
-        # update the string on screen
-        sys.stdout.flush()
-        return True
-
-    return False
-
-
 if __name__ == '__main__':
     x = np.linspace(0, 2*np.pi, 200)
     dts = np.linspace(0, 10, 1000)
