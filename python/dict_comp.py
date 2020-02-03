@@ -10,8 +10,8 @@ def dict_comp(a, b, pref=''):
     for k in a.keys():
         if isinstance(a[k], dict):
             dict_comp(a[k], b[k], pref=k+'.')
-            
-        print(pref + k, ' equal ', a[k] == b[k])
-        
-        if a[k] != b[k]:
-            print(LINE, a[k], LINE, b[k], LINE)
+        else:
+            print(pref + k, ' equal ', a[k] == b[k])
+
+            if a[k] != b[k]:
+                print(LINE, a[k], LINE, b[k], LINE)
